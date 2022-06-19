@@ -9,12 +9,12 @@ import adafruit_dht
 def main():
     dhtDevice = adafruit_dht.DHT22(board.D4, use_pulseio=False)
 
-    # while True:
     try:
-        # Print the values to the serial port
         temperature_c = dhtDevice.temperature
         temperature_f = temperature_c * (9 / 5) + 32
         humidity = dhtDevice.humidity
+        
+
         print(
             "Temp: {:.1f} F / {:.1f} C    Humidity: {}% ".format(
                 temperature_f, temperature_c, humidity
@@ -23,13 +23,11 @@ def main():
 
     except RuntimeError as error:
         print(error.args[0])
-        # time.sleep(2.0)
-        # continue
+        return
     except Exception as error:
         dhtDevice.exit()
         raise error
-
-    # time.sleep(2.0)
+        return
 
     return temperature_c, humidity
 
