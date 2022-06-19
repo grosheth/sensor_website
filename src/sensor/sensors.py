@@ -6,7 +6,6 @@ import board
 import adafruit_dht
 
 
-
 def main():
     dhtDevice = adafruit_dht.DHT22(board.D4, use_pulseio=False)
 
